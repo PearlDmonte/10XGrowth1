@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ArrowRight, Check, X as XIcon, TrendingUp, Users, Target, Rocket, Layers, BarChart3, Database, Shield, Zap, Globe, MessageSquare, UserPlus, Smartphone, Megaphone, Cloud, Coins, Layout } from "lucide-react";
+import { ArrowRight, Check, X as XIcon, TrendingUp, Users, Target, Rocket, Layers, BarChart3, Database, Shield, Zap, Globe, MessageSquare, UserPlus, Smartphone, Megaphone, Cloud, Coins, Layout, Lightbulb, MessageCircle, Instagram } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -39,6 +39,7 @@ export default function Home() {
         <ServicesCarousel />
         <ProcessTimeline />
         <GrowthVisualization />
+        <EcosystemSection />
         <DeepDiveZoho />
         <DeepDiveCXO />
         <SocialProof />
@@ -156,31 +157,44 @@ function TrustedBySection() {
 
   return (
     <section className="py-20 bg-background overflow-hidden border-b border-white/5">
-      <div className="container mx-auto px-4">
-        <p className="text-center text-muted-foreground font-medium uppercase tracking-[0.2em] text-xs mb-12">
+      <div className="container mx-auto px-4 mb-12">
+        <p className="text-center text-muted-foreground font-medium uppercase tracking-[0.2em] text-xs">
           Trusted By Industry Leaders
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-12 opacity-50 hover:opacity-100 transition-opacity duration-500">
-          {logos.map((logo, i) => (
-            <motion.div
+      </div>
+
+      <div className="relative flex overflow-hidden">
+        <div className="flex w-max animate-scroll-logos py-4">
+          {[...logos, ...logos, ...logos].map((logo, i) => (
+            <div
               key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
+              className="flex items-center justify-center mx-12 shrink-0"
             >
-              <img src={logo.path} alt={logo.name} className="h-8 md:h-12 w-auto max-w-[140px] object-contain" />
-            </motion.div>
+              <img
+                src={logo.path}
+                alt={logo.name}
+                className="h-10 md:h-14 w-auto max-w-[180px] object-contain"
+              />
+            </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes scroll-logos {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.33%); }
+        }
+        .animate-scroll-logos {
+          animation: scroll-logos 40s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }
 
 function TrustRibbon() {
-  const services = ["Growth Strategy", "Digital Transformation", "Zoho Implementation", "CXO on Demand", "Performance Marketing", "Process Automation", "Team Augmentation"];
+  const services = ["Growth Operating System", "Continuous Innovation Framework", "Zoho Business OS", "Whatsapp Growth Engine", "Digital Marketing", "Instagram Brand Story", "Growth Studio"];
 
   return (
     <div className="w-full py-8 bg-white/5 border-y border-white/5 overflow-hidden">
@@ -280,60 +294,53 @@ function ProblemSolutionSection() {
 function ServicesCarousel() {
   const services = [
     {
-      title: "Growth Consulting",
-      description: "We begin our engagement with understanding your vision, your current team and resources, the gaps in execution, and then, we jointly create a roadmap for 10xGrowth.",
+      title: "Growth Operating System",
+      description: "A comprehensive operating system designed to automate, scale, and optimize every facet of your business growth trajectory.",
       icon: TrendingUp,
       color: "#ff6b35",
-      tags: ["Strategy", "Execution", "Roadmap"]
+      tags: ["Systems", "Scale", "Automation"]
     },
     {
-      title: "Recruitment",
-      description: "Discover top talent effortlessly with our recruitment services. Our team of expert recruiters ensures you find the perfect fit for your company, turning your hiring needs into a reality.",
-      icon: UserPlus,
+      title: "Continuous Innovation Framework ( CIF )",
+      description: "A structured methodology to foster ongoing innovation, ensuring your business stays ahead of market trends and competitors.",
+      icon: Lightbulb,
       color: "#8b5cf6",
-      tags: ["HR", "Talent", "Scale"]
+      tags: ["Innovation", "Strategy", "R&D"]
     },
     {
-      title: "Zoho Implementation",
-      description: "Maximize your business efficiency with our Zoho integration services. We seamlessly connect Zoho with third-party apps, customizing workflows to suit your needs.",
+      title: "Zoho Business Operating System",
+      description: "The ultimate unified business platform, customized and integrated to manage your entire operation from a single pane of glass.",
       icon: Database,
       color: "#3b82f6",
-      tags: ["CRM", "Automation", "Efficiency"]
+      tags: ["Unified Ops", "CRM", "ERP"]
     },
     {
-      title: "Fund Raising",
-      description: "We'll help you connect with investors and craft an attractive pitch deck to achieve your fundraising goals. With our strong investor network, your project will stand out.",
-      icon: Coins,
+      title: "Whatsapp Growth Engine",
+      description: "Harness the power of conversational commerce to drive leads, engagement, and sales through intelligent Whatsapp automation.",
+      icon: MessageCircle,
       color: "#10b981",
-      tags: ["Investors", "Pitch Deck", "Funding"]
+      tags: ["Communication", "Leads", "Automation"]
     },
     {
-      title: "Website Development",
-      description: "Achieve your online goals effortlessly with our web development services. We'll build your website, integrate hosting, and streamline customer management with CRM integration.",
-      icon: Globe,
+      title: "Revenue Focused Digital Marketing",
+      description: "Data-driven marketing strategies that prioritize bottom-line growth and measurable ROI over vanity metrics.",
+      icon: BarChart3,
       color: "#f59e0b",
-      tags: ["Web", "Hosting", "CRM"]
+      tags: ["ROI", "Conversions", "Ads"]
     },
     {
-      title: "App Development",
-      description: "We ensure your app is user-friendly and reliable. With our expertise, we provide a seamless experience for both you and your users throughout the app development process.",
-      icon: Smartphone,
+      title: "Instagram Brand Story",
+      description: "Elevate your brand's digital presence with compelling visual storytelling that builds authority and converts followers into loyal customers.",
+      icon: Instagram,
       color: "#ec4899",
-      tags: ["Mobile", "UX/UI", "Reliability"]
+      tags: ["Branding", "Vuals", "Authority"]
     },
     {
-      title: "Digital Marketing",
-      description: "Boost your online presence with our digital marketing services. We specialize in building brands, crafting tailored strategies to engage your audience and drive conversions.",
-      icon: Megaphone,
+      title: "Growth Studio as a Service - GSaaS",
+      description: "Your on-demand growth squad, providing veteran expertise and execution power without the overhead of internal hiring.",
+      icon: Rocket,
       color: "#6366f1",
-      tags: ["Branding", "Strategies", "Conversions"]
-    },
-    {
-      title: "Cloud Infrastructure",
-      description: "We take care of everything from managing your IT needs to keeping your data safe and sound, so you can stay focused on growing your business.",
-      icon: Cloud,
-      color: "#14b8a6",
-      tags: ["IT", "Security", "Management"]
+      tags: ["Expertise", "Execution", "On-Demand"]
     }
   ];
 
@@ -512,6 +519,53 @@ function GrowthVisualization() {
                 />
               ))}
             </svg>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EcosystemSection() {
+  return (
+    <section className="py-32 relative overflow-hidden bg-background">
+      <div className="container mx-auto px-4">
+        <SectionHeading
+          eyebrow="The 10xGrowth Network"
+          title="A Unified Ecosystem"
+          subtitle="Connecting entrepreneurs, investors, professionals, and experts in a high-performance growth engine."
+        />
+
+        <div className="mt-20 relative max-w-5xl mx-auto">
+          {/* Decorative background glow */}
+          <div className="absolute inset-0 bg-primary/5 rounded-full blur-[120px] scale-75" />
+
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 1,
+              ease: "easeOut"
+            }}
+            className="relative z-10"
+          >
+            <motion.img
+              src="/ecosystem.png"
+              alt="10xGrowth Ecosystem"
+              className="w-full h-auto rounded-3xl shadow-2xl border border-white/5"
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+
+            {/* Subtle overlay to blend better with dark theme if needed */}
+            <div className="absolute inset-0 pointer-events-none rounded-3xl bg-gradient-to-t from-background/20 to-transparent" />
           </motion.div>
         </div>
       </div>
