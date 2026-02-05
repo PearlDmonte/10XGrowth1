@@ -18,6 +18,25 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (href.startsWith("/#") && location === "/") {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 80; // Account for fixed header
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+      setMobileMenuOpen(false);
+    }
+  };
+
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Services", href: "/#services" },
@@ -101,6 +120,7 @@ export function Navigation() {
                           <Link
                             key={sublink.label}
                             href={sublink.href}
+                            onClick={(e) => handleNavClick(e, sublink.href)}
                             className="block px-4 py-3 text-white text-sm hover:bg-white/10 transition-colors"
                           >
                             {sublink.label}
@@ -113,6 +133,7 @@ export function Navigation() {
               ) : (
                 <Link
                   href={link.href!}
+                  onClick={(e) => handleNavClick(e, link.href!)}
                   className={`text-sm font-medium transition-colors ${location === link.href ? "text-coral-500" : "text-white hover:text-coral-500"}`}
                 >
                   {link.label}
@@ -169,7 +190,7 @@ export function Navigation() {
                           <Link
                             key={sublink.label}
                             href={sublink.href}
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={(e) => handleNavClick(e, sublink.href)}
                             className="text-white/80 hover:text-coral-500 transition-colors text-base"
                           >
                             {sublink.label}
@@ -180,7 +201,7 @@ export function Navigation() {
                   ) : (
                     <Link
                       href={link.href!}
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={(e) => handleNavClick(e, link.href!)}
                       className={`text-lg font-medium block ${location === link.href ? "text-coral-500" : "text-white hover:text-coral-500"}`}
                     >
                       {link.label}
