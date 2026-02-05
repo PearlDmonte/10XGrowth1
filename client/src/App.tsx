@@ -10,6 +10,7 @@ import Contact from "@/pages/Contact";
 import ZohoMain from "@/pages/ZohoMain";
 import ZohoPartner from "@/pages/ZohoPartner";
 import ZohoPricing from "@/pages/ZohoPricing";
+import ScrollToTop from "@/components/ScrollToTop";
 
 function Router() {
   return (
@@ -30,6 +31,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <ScrollToTop />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>

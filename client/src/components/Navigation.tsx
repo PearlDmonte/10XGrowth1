@@ -30,7 +30,7 @@ export function Navigation() {
       dropdown: [
         { label: "Partner", href: "/zoho/partner" },
         { label: "Pricing", href: "/zoho/pricing" },
-      ],
+      ]
     },
     { label: "Outsource", href: "/outsource" },
     {
@@ -39,7 +39,7 @@ export function Navigation() {
         { label: "Studio", href: "/studio" },
         { label: "Contact Us", href: "/contact" },
         { label: "Video Training Services", href: "/video-training" },
-      ],
+      ]
     },
   ];
 
@@ -52,9 +52,8 @@ export function Navigation() {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-black">
-          <span className="text-coral-500">10x</span>
-          <span className="text-white">GROWTH</span>
+        <Link href="/" className="flex items-center gap-2">
+          <img src="/logo.png" alt="10xGrowth" className="h-10 w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav */}
