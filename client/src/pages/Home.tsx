@@ -69,7 +69,7 @@ function HeroSection() {
           className="space-y-8"
         >
           <div className="inline-block px-4 py-2 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm font-bold tracking-widest uppercase">
-            The Future of B2B Growth
+            Your Growth Partner
           </div>
 
           <h1 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] tracking-tighter">

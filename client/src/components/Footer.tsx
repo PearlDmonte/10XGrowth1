@@ -45,14 +45,14 @@ export function Footer() {
             <h4 className="text-xs font-bold text-primary tracking-widest uppercase">Services</h4>
             <ul className="space-y-4">
               {[
-                "Growth Consulting",
-                "Recruitment",
-                "Zoho Implementation",
-                "Fund Raising",
-                "Website Development",
-                "App Development",
-                "Digital Marketing",
-                "Cloud Infrastructure"
+                "Growth Operating System",
+                "Continuous Innovation Framework ( CIF )",
+                "Zoho Business Operating System",
+                "Whatsapp Growth Engine",
+                "Revenue Focused Digital Marketing",
+                "Instagram Brand Story",
+                "Growth Studio as a Service - GSaaS",
+                
               ].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
@@ -68,7 +68,7 @@ export function Footer() {
             <h4 className="text-xs font-bold text-primary tracking-widest uppercase">Get in Touch</h4>
             <div className="space-y-4 text-sm text-muted-foreground">
               <p className="hover:text-white cursor-pointer transition-colors">hello@10xgrowth.com</p>
-              <p className="hover:text-white cursor-pointer transition-colors">+1 (555) 10X-GROW</p>
+              <p className="hover:text-white cursor-pointer transition-colors">+91 98200 20753</p>
             </div>
             <button className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors group">
               Schedule a Call
